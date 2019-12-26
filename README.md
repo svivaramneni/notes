@@ -1,1 +1,1 @@
-# notes
+# Repository for my notes
