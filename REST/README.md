@@ -21,10 +21,10 @@ It is a architectural style. Not a protocol or a design pattern.
 * Each message completely identifies the resource it concerns.
 #### Hypermedia as the engine of application state (HATEOAS)
 * Restful servers and clients shouldn't rely on a hardcoded interface. Instead, server should send set of URIs representing possible state transitions with each response.
-`HTTP/1.1 200 OK
+```json
+HTTP/1.1 200 OK
 Content-Type: application/vnd.acme.account+json
 Content-Length: ...
-
 {
     "account": {
         "account_number": 12345,
@@ -39,6 +39,9 @@ Content-Length: ...
             "close": "/accounts/12345/close"
         }
     }
-}`
+}
+```
+
+#### Test
 
 
