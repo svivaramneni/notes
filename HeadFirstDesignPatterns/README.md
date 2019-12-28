@@ -23,5 +23,12 @@
     * No class should derive from a concrete class. Derive from an abstraction, like an interface or abstract class.
     * No method should override an implemented method of any of its base classes.
 
+    ### Singleton Pattern
+    * It ensures a class has only one instance, and provides a global point of access to it.
+    * private constructor, static getter and initalize object during class loading through static instance field.
+
+
+
+
 
 
