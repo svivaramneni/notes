@@ -7,8 +7,8 @@
 ### Step2: System Interface Definition
 * Define what specific APIs are expected from the system. This will help in validating assumptions.
 ```java
-Ex: postTweet(String tweetData, UserContext context)
-                   markTweetFavorite(String tweetID, UserContext context)
+postTweet(String tweetData, UserContext context)
+markTweetFavorite(String tweetID, UserContext context)
 ```
 Context object could contain data, such as current_time, user_location, user_id etc.
 
