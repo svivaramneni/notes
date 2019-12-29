@@ -5,7 +5,7 @@
 
 ### What is REST?
 It is a architectural style based on HTTP. Not a protocol or a design pattern.
-### Statelessness
+#### Statelessness
 * Each request must contain all of the inforation necessary for the server to understand the request. 
 * It should not rely on any stored context on the server.
 #### Cacheability
@@ -87,10 +87,19 @@ Only Level 3 in this model can actually be considered REST.
 ### REST vs OData
 
 
-### OpenAPI
+### OpenAPI (Swagger)
+* Allows developers to specify the operations and metadata of APIs in machine readable form.
+* Integrating Swagger with Spring boot application
+    * Add swagger dependencies `springfox-swagger2`
+    * Enable swagger in the code through a configuration class. `@EnableSwagger2`
+    * Configure swagger
 
 
 ### JSON API
+* Speecificaton for how a client should request resources and how server should respond to those requests.
+* It is designed to minimize both the number of requests and the amount of data transmitted between clients and servers. 
+* Efficiency is achieved without compromising readability, flexibility or discoverability.
+* Requires use of JSON:API media type (`appliation/vnd.api+json`) for exchanging data.
 
 
 
