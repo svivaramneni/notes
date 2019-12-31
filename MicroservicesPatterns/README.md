@@ -87,5 +87,65 @@ Microservices is an architectural style that functionally decomposes an applicat
  * Transactional outbox
     * Publish an event or message as part of a database transaction by saving it in an OUTBOX in the database.
     * A sophisticated solution for MessageRelay is to tail the database transaction log(commit log).
- 
+
+### Managing transactions with sagas
+ * Some modern databases like MongoDB, Cassandra or message brokers such as RabbitMQ or Kafka doesn't support distributed transactions.
+ * Distributed transacations rely on synchronous IPC, which reduces availability.
+ * Todays architects prefer systems thats available rather than consistent.
+
+#### Saga pattern
+* Maintain data consistency across services using a sequence of local transactions that are coordinated using asynchronous messaging.
+* When a step of a saga fails because of business rule violation, the saga must explicitly undo the updates made by previous steps by executing compensating transactions.
+* In choreography based sagas, there is no central coordinator. Instead saga participants subscribe to each others events and respond accordingly.
+* Choreography works well for simple sagas.
+* In Orchestration based sagas, orchestrators sole responsibility is to tell the saga participants what to do.
+* Using a state machine model makes designing, implementing and testing sagas easier.
+
+### Implementing Queries in Microservices
+* API composition pattern consists of an API composer and two or more provider services. The API composer implements a query by querying the providers and combining the results.
+* CQRS: Implement a query that needs data from several services by using events to maintain  a readonly view that replicates data from services.
+* Case for CQRS
+    * Using the API composition pattern to retrieve data scattered across multiple services results in expensive, inefficient in-memory joins.
+    *  The service that owns the data stores the data in a form or in a database that doesn’t efficiently support the required query.
+    * The need to separate concerns means that the service that owns the data isn’t the service that should implement the query operation.
+
+### External API Patterns
+* APIs could be consumed by webapplications, mobile or third party party integrations.
+* Its not practical for a client to perform API composition over the internet. They are slow, no encapsulation, may not support all protocols.
+* **API Gateway**: Implement a service thats a entry point into the microservice based application from external API clients.
+    * API gateway acts like a facade and supports requests routing, authentication, monitoring, caching and rate limiting.
+    * Client teams should own their API module and common API gateway should be fully automated.
+* **Backend for Frontend**: Implement a separate API gateway for each client.
+    * Clear isolation improves reliability. Also, these can be scaled independently.
+    * Code duplication of common components.
+* API gateway should fanout service calls in parallel. Whether to use blocking threads(Java8 CompletableFutures) or non blocking threads(NodeJS) is upto the teams.
+* Examples of API gateway frameworks: Netflix Zuul, Spring Cloud Gateway.
+* GraphQL provides graph based query language. Excellent foundation for deveopling API gateway.
+
+### Authentication and authorization
+* API gateway should authenticate and pass tokens to the services.
+
+### Observability
+* Health check API
+* Log aggregation through centralized logging server with provides searching and alerting.
+* Distributed tracing by assinging unique ID to each external request.
+* Application metrics
+* Audit logging to log user interactions.
+
+### Chassis
+Build services on a framework or collection of frameworks that handle cross-cutting concerns, such as exception tracking, logging, health checks, circuit breaker, service discovery, externalized configuration and distributed tracing.
+
+### Service Mesh
+Route all network traffic in and out of services through a network layer that implements various concerns, including circuit breakers, distributed tracing, service discovery, load balancing, rule based traffic routing.
+Ex: Istio, Linkerd and Conduit.
+
+### Strangler Application
+Modernize application by incrementally developing new (strangler) application around the legacy application.
+#### Strategies for refactoring a monolith to microservices
+* Implement new features as services - If you find yourself in a hole, stop digging.
+* Separate the presentation tier and backend
+* Breakup the monolith by extracting functionality into services.
+
+
+  
 
