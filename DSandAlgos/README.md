@@ -61,12 +61,6 @@ Ex: Unbalanced binary search tree
 ```
 * Deleting an element from BST involves 4 combinations. Deleting leaf node, deleting node with left child, deleting node with right child and deleting a node with left and right child. We need reference to the parent to do this. Implement this.
 
-### Traversal
-* PreOrder Traversal: root, left, right
-* Postorder: left, right, root
-* Inorder: left, root, right
-* Insertion, deletion, lookup is O(logn) for a reasonably balanced binary tree.
-
 ### Heap
 * Simple tree data structure with 2 variants/strategies. Min heap, max heap. 
 * Min Heap: Each parent node would have a value that is <= its children. So smallest element is at the root.

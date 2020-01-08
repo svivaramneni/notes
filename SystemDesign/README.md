@@ -69,3 +69,10 @@
 ### Cassandra
 * Wide column store designed to handle large amounts of data.
 * Its masterless with ring architecture.
+
+### Back of the envelope estimate
+* 2.5 Million seconds per month
+* 
+
+### Resources
+*[System Design Primer] (https://github.com/donnemartin/system-design-primer)
