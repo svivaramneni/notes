@@ -133,3 +133,14 @@ public class NashornJs {
 ```
 
 ### Type Annotations
+
+
+### Effective Java 3rd Edition
+
+
+### Java thread dump
+A snapshot of threads in the current JVM. It contains information such as what each thread is doing currently. A sequence of dumps helps in identifying locks.
+* Commands
+  * kill -3 : this will write dump to standard output path. <tomcat>/logs/catalina.out
+  * jStack -l <pid> outputpath
+  * 
