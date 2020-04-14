@@ -1,15 +1,16 @@
-### VCS
+### Version Control
 * Git is a distributed version control system.
-* CVS maintains versions at file level and SVN does it at folder level. Both work on the model of central repositories.
-* Change sets is the key.
+* CVS maintains versions at a file level and SVN does it at folder level. Both work on the model of central repositories.
+* Git uses Change sets.
+
 ### Git Configurations
-* System -> etc/gitconfig -> git config --system
+* System -> etc/gitconfig -> git config --system -l
 * User -> ~/.gitconfig -> git config --global
 * Project -> my_project/.git/config -> git config
 
 ### Common Git workflow
 * Make changes
-* Add the changes
+* Add changes to Staging
 * Commit changes with a message.
 
 ### Commit Message best practices
@@ -39,34 +40,20 @@
 * git revert a84791uqiu893 - Revert a commit
 * git clean -n
 
+### Other Popular Commands
+* git config --global core.editor "subl -n -w"
+* git add -A -> moves all files to staging area
+* git branch -a
+* git pull origin master
+* git push origin master
+* git show ab1234def - Display changes in one commit.
 
-### Popular Commands
-* Help command
-'git help log'
-
-
-
-* List all configurations
-git config --list
-
-git add -A -> moves all files to staging area
-git reset ABC.java -> resets files from staging area.
-git commit -m "Initial Commit"
-git log
-git clone "remote url" .
-git branch -a
-git diff
-git pull origin master
-git push origin master
-git show ab1234def - Display changes in one commit.
-
-workflow
-
-git branch sridhar-v/LRN
-git checkout sridhar_v/LRN
-git branch
-make changes
-commit and push.
-git push -u origin master
-git checkout master
-git merge substract
+### Simple workflow
+* git branch user-v/LRN
+* git checkout user_v/LRN
+* git branch
+* make changes
+* commit and push.
+* git push -u origin master
+* git checkout master
+* git merge substract
