@@ -32,7 +32,7 @@ It has 4 parts.
 2. function name. This example is a ananymous function. since it doesnot have a name.
 3. parameters.
 4. body fo the function.
-* An innter function also enjoys access to the parameters and variables of the functions it is nested within.
+* An inner function also enjoys access to the parameters and variables of the functions it is nested within.
 * The function object created by a function literal contains a link to that outer context. This called closure. This is the source of enormous expressive power.
 * Invoking a function suspends the execution of the current function, passing control and parameters to the new function. In addition to the declared parameters, every function receives two additional parameters: this and arguments. The this parameter is very important in object oriented programming, and its value is determined by the invocation pattern. There are four patterns of invocation in JavaScript: the method invocation pattern, the function invocation pattern, the constructor invocation pattern, and the apply invocation pattern. The patterns differ in how the bonus parameter this is initialized.
 ### Method Invocation Pattern:

@@ -1,4 +1,78 @@
-### Lambda Expressions
+### Why Lambdas ?
+* Enables functional programming in Java
+* Makes code concise and readable
+* Easier-to-use APIs and libraries
+* Enables support for parallel processing
+
+### Limitations with OOP
+* Everything is an object
+* All code blocks are associated with classes and objects
+
+Lamdas are functions, which exist in isolation, they do not belong to a class. Those can be considered as values and passed around.
+```
+String name = "foo";
+double pi = 3.14;
+aBlockOfCode = {
+}
+
+Ex:
+aBlockOfCode = public void perform() {
+  System.out.println("Perform Behavior");
+}
+```
+In the above example, we have some extra code, which is not really needed in the context of isolated functions(lambdas). That information could be either inferred or redundant.
+* The <code> public </code> access specifier makes sense in the context of a class. But not in lamdas as whoever has access to that variable could invoke it.
+* Similarly Return type could be inferred.
+* Method name is redundant as we could invoke the behavior with variable name.
+* If the method implementation is one line, then we don't need curly braces. So after removing all those it becomes
+```
+aBlockOfCode = () -> System.out.println("Perform Behavior");
+```
+Some additional lambda Examples
+```
+greetingFuntion = () -> System.out.println("Greeting");
+
+doubleNumberFunction = (int a) -> a*2;
+
+addFunction = (int a, int b) -> a + b;
+
+safeDivideFunction = (int a, int b) -> {
+  if(b==0)
+    retun 0;
+  return a / b;
+}
+
+stringLengthFunction = (String s) -> s.length();
+stringLengthFunction = s -> s.length(); //Shortest lambda. Here type of s is inferred from the method type.
+
+
+```
+#### Lambda as Interface Type
+* Lamdas leverage Interfaces for type. Type interface should have only one abstract method and its signature should be same as lambda, so that it could be used for compile time checking.
+* Lambdas are not exactly annonymous inner classes, but similar.
+* This provides backward compatibility so that we could reuse all existing libraries and anonymous inner classes.
+
+### Functional Interface
+* Interface which has only one abstract method.
+* We could optionally add <code>@FunctionalInterface</code> annotation to functional interfaces, so that we don't accidentally add additional methods and break existing lambdas.
+* <code>java.util.function</code> package contains set of common functional interfaces to cater most needs.
+
+### Closures in Lambda Expressions
+* Variables declared outside lambda could be accessed inside lambda. But they are considered final. If we try to override the value, compiler will give an error.
+* Unlike anonymous inner classes, lambdas doesn't have <code>this</code> reference. In case of lambdas <code>this</code> points to the class who is holding the lambda.
+
+
+### Method References
+* Alternative syntax to lambda, if there are no arguments or equal number of arguments as passthrough.
+```
+printPeople(people, p -> true, System.out::println);
+```
+
+### forEach iteration
+* Java8 introduced a new internal iteration method. Example with lamdba/method reference.
+```
+people.foreach(System.out::println);
+```### Lambda Expressions
 Lambda's make writing and reading anonymous classes easier. They are very popular in Scala.
 ```java
 private static final FileFilter FOLDER_FILTER = new FileFilter() {
@@ -132,15 +206,3 @@ public class NashornJs {
 }
 ```
 
-### Type Annotations
-
-
-### Effective Java 3rd Edition
-
-
-### Java thread dump
-A snapshot of threads in the current JVM. It contains information such as what each thread is doing currently. A sequence of dumps helps in identifying locks.
-* Commands
-  * kill -3 : this will write dump to standard output path. <tomcat>/logs/catalina.out
-  * jStack -l <pid> outputpath
-  * 
